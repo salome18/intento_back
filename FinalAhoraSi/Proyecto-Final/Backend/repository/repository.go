@@ -114,19 +114,19 @@ func (r *CarRepository) GetCars(marca, combustible, transmision, carroceria stri
     args := []interface{}{}
 
     if marca != "" {
-        query += " AND marca = ?"
+        query += "AND marca = ?"
         args = append(args, marca)
     }
     if combustible != "" {
-        query += " AND combustible = ?"
+        query += "AND combustible = ?"
         args = append(args, combustible)
     }
     if transmision != "" {
-        query += " AND transmision = ?"
+        query += "AND transmision = ?"
         args = append(args, transmision)
     }
     if carroceria != "" {
-        query += " AND carroceria = ?"
+        query += "AND carroceria = ?"
         args = append(args, carroceria)
     }
 

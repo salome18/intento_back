@@ -150,14 +150,6 @@ func (h *Handler) CrearUsuario(writer http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	// Responder con el ID del nuevo usuario creado
-	//response := map[string]int64{"id": userID}
-	//jsonResponse, err := json.Marshal(response)
-	//if err != nil {
-	//	http.Error(w, err.Error(), http.StatusInternalServerError)
-	//	return
-	//}
-
 	writer.WriteHeader(http.StatusCreated)
 	writer.Write([]byte(fmt.Sprintf("id nuevo usuario: %d", nuevoID)))
 }
@@ -183,7 +175,10 @@ func (h *CarHandler) GetCars(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+    // Establecer los encabezados CORS directamente en el manejador de solicitud
     w.Header().Set("Content-Type", "application/json")
     w.Header().Set("Access-Control-Allow-Origin", "*")
+
+    // Codificar y escribir la respuesta JSON
     json.NewEncoder(w).Encode(cars)
 }
