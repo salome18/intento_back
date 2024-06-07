@@ -164,5 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.transmision').textContent = data.transmision;
         document.querySelector('.carroceria').textContent = data.carroceria;
         document.querySelector('.car-img img').src = data.imagen;
+        document.querySelector('.precio').textContent=data.precio_por_dia;
     }
 });

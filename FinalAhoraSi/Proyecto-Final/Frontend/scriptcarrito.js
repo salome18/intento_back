@@ -29,14 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+
     // Escuchar el evento click en el botón "Reservar"
     const reservarBtn = document.getElementById('reservar_btn');
     reservarBtn.addEventListener('click', () => {
+
+        const carNameElement = document.querySelector('.Detalles .Car-name');
+        const carImgElement = document.querySelector('.Detalles .car-img img');
+        const carPriceElement= document.querySelector('.Detalles .precio');
+        const price = parseFloat(carPriceElement.textContent);
         
         const selectedCar = {
-            imgSrc: 'Images/Carro.png', 
-            name: 'Nombre del carro',   
-            price: 10000                
+            imgSrc: carImgElement.src, 
+            name: carNameElement.textContent,
+            price: price                
         };
         addToCart(selectedCar);
     });
