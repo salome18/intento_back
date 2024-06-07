@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error al obtener la información de los autos:', error);
-                const carsContainer = document.querySelector('.Cards-cars');
-                carsContainer.innerHTML = "<p>Error al obtener la información de los autos.</p>";
+                const carsContainer = document.querySelector('.search-results');
+                carsContainer.innerHTML = "<p>Lo sentimos, ninguno de nuestros autos cumple con los filtros ingresados. Por favor intenta de nuevo.</p>";
             });
     }
 
