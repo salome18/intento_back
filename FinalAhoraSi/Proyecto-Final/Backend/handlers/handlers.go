@@ -10,7 +10,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"encoding/json"
-	//"proyecto-final/models"
 )
 
 type Handler struct {
@@ -30,21 +29,6 @@ func (h *Handler) ActualizarUsuario(w http.ResponseWriter, r *http.Request) {
 	// Obtener el ID del usuario de la ruta
 	vars := mux.Vars(r)
 	id := vars["id"]
-
-	// Decodificar el cuerpo de la solicitud en un usuario
-	//var updatedUser models.Usuario
-	//err := json.NewDecoder(r.Body).Decode(&updatedUser)
-	//if err != nil {
-	//	http.Error(w, err.Error(), http.StatusBadRequest)
-	//	return
-	//}
-
-	// Convertir la estructura de usuario a []byte
-	//userBytes, err := json.Marshal(updatedUser)
-	//if err != nil {
-	//	http.Error(w, err.Error(), http.StatusInternalServerError)
-	//	return
-	//}
 
 	// Llamar al controlador para actualizar el usuario
 	body, err := io.ReadAll(r.Body)
@@ -97,13 +81,6 @@ func (h *Handler) TraerUsuario(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Serializar la respuesta en JSON
-	//jsonResponse, err := json.Marshal(user)
-	//if err != nil {
-	//	http.Error(w, err.Error(), http.StatusInternalServerError)
-	//	return
-	//}
-
 	// Establecer el encabezado y escribir la respuesta
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -118,13 +95,6 @@ func (h *Handler) ListarUsuarios(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "fallo al leer los usuarios", http.StatusInternalServerError)
 		return
 	}
-
-	// Serializar la respuesta en JSON
-	//jsonResponse, err := json.Marshal(users)
-	//if err != nil {
-	//	http.Error(w, err.Error(), http.StatusInternalServerError)
-	//	return
-	//}
 
 	// Establecer el encabezado y escribir la respuesta
 	w.Header().Set("Content-Type", "application/json")
