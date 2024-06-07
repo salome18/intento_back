@@ -112,22 +112,27 @@ func NewCarRepository(db *sqlx.DB) *CarRepository {
 func (r *CarRepository) GetCars(marca, combustible, transmision, carroceria string) ([]models.Car, error) {
     query := "SELECT nombre, marca, combustible, transmision, carroceria, modelo, precio_por_dia, imagen FROM cars WHERE 1=1"
     args := []interface{}{}
+    argPos := 1
 
     if marca != "" {
-        query += "AND marca = ?"
+        query += fmt.Sprintf(" AND marca = $%d", argPos)
         args = append(args, marca)
+        argPos++
     }
     if combustible != "" {
-        query += "AND combustible = ?"
+        query += fmt.Sprintf(" AND combustible = $%d", argPos)
         args = append(args, combustible)
+        argPos++
     }
     if transmision != "" {
-        query += "AND transmision = ?"
+        query += fmt.Sprintf(" AND transmision = $%d", argPos)
         args = append(args, transmision)
+        argPos++
     }
     if carroceria != "" {
-        query += "AND carroceria = ?"
+        query += fmt.Sprintf(" AND carroceria = $%d", argPos)
         args = append(args, carroceria)
+        argPos++
     }
 
     var cars []models.Car
